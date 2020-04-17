@@ -1,0 +1,17 @@
+
+
+
+<ion-slides class="slider">
+  <ion-slide class="slider-slides" *ngFor="let image of images; let i = index" >
+    <ion-img [src]="image.image"></ion-img>
+    <ion-fab *ngIf="image.uid != this.uid" vertical="bottom" horizontal="end">
+      <div class="mail-box">Usuario: {{image.umail}} - Votos: {{this.cantidadDeVotos(i)}}</div>
+      <ion-button size="large" color="success" (click)="votar(i)"> 
+        <ion-icon [name]="this.verificarVotacion(i) ? 'thumbs-down' :'thumbs-up'"></ion-icon>
+      </ion-button>
+    </ion-fab>
+    <ion-fab *ngIf="image.uid == this.uid" vertical="bottom" horizontal="center">
+      <ion-button size="large" color="danger" (click)="eliminar(i)"><ion-icon name="trash"></ion-icon></ion-button>
+    </ion-fab>
+  </ion-slide>
+</ion-slides>

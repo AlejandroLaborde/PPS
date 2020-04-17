@@ -1,0 +1,35 @@
+.image--background {
+    background-size: contain;
+    background-repeat: no-repeat;    
+    background-attachment: fixed;
+    background-position: center;
+ }
+
+ .mail-box {
+    color:white;
+    background-color: black;
+    margin-top: 0;
+    padding: 10px;
+ }
+
+ ion-grid {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    background-color: black;
+ }
+
+ ion-row {
+    flex-grow: 1;
+ }
+
+ .slider {
+    height:100vh;
+    width: 100vw;
+ }
+  
+.slider-slide {
+    height: 100vh;
+    width: 100vw;
+ }
+  
