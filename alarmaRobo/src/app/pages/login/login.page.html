@@ -1,0 +1,35 @@
+<ion-content class="background-image" >
+
+  <ion-row style="align-items: center;justify-content: center">
+    <ion-fab-button color="warning" (click)='autocompleta("IN")' >IN</ion-fab-button>
+    <ion-fab-button color="success" (click)='autocompleta("TS")' >TS</ion-fab-button>
+    <ion-fab-button color="tertiary" (click)='autocompleta("AN")'  >AN</ion-fab-button>
+    <ion-fab-button color="secondary" (click)='autocompleta("US")' >US</ion-fab-button>
+    <ion-fab-button color="primary" (click)='autocompleta("AD")' >AD</ion-fab-button>
+  </ion-row>
+
+  <img src="../../../assets/images/user.png">
+
+      <div style="width: 80%; justify-content: center;align-items: center; margin: auto;">
+        <ion-item style="border-radius: 20px;margin-bottom: 3px;">
+          <ion-label position="stacked">Usuario <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" [(ngModel)]="correo" ></ion-input>
+        </ion-item>
+
+        <ion-item style="border-radius: 20px;">
+          <ion-label position="stacked">Contraseña <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="password" [(ngModel)]="clave"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" color="danger" *ngIf="cargando"><ion-spinner name="crescent"></ion-spinner>
+          Cargando...</ion-button>
+
+        <ion-button expand="block" color="danger" *ngIf="!cargando" (click)="logIn()" ><ion-icon name="key-outline"> </ion-icon>Aceptar</ion-button>
+      </div>
+        
+        
+        
+
+     
+
+</ion-content>

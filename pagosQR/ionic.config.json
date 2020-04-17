@@ -1,0 +1,7 @@
+{
+  "name": "pagosQR",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
