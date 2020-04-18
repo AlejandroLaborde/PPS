@@ -1,0 +1,42 @@
+
+
+
+
+<app-header [titulo]="title" [backButton]="true"></app-header>
+<ion-content padding>
+  <ion-segment [(ngModel)]="galleryType">
+    <ion-segment-button value="AllPhotos">
+      <ion-label>Todas las fotos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="MyPhotos">
+      <ion-label>Mis fotos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+    <ion-grid *ngIf="galleryType==='AllPhotos'" fixed>
+      <ion-row>
+        <ion-col size="6" size-md="4" size-lg="3" *ngFor="let image of allPhotos; let i = index" [attr.data-index]="i">
+          <div class="image-container" [ngStyle]="{'background-image': 'url(' + image.image + ')'}"
+            (click)="openGallery(i, galleryType)">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="galleryType==='MyPhotos'"  fixed>
+      <ion-row>
+        <ion-col size="6" size-md="4" size-lg="3" *ngFor="let image of myPhotos; let i = index" [attr.data-index]="i">
+          <div class="image-container" [ngStyle]="{'background-image': 'url(' + image.image + ')'}"
+            (click)="openGallery(i, galleryType)">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="tomarFoto()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
