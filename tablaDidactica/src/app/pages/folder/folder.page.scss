@@ -1,23 +1,72 @@
 
+ion-content{
+    
+    display: flex; /* or inline-flex */
+    flex-direction: column;
+    align-items: stretch;
 
-
-.fila{
-    display: flex;
-    justify-content: space-evenly;
 }
 
-// .banderas {
-//     width:300px;
-//     height:300px;
-//     border-radius:160px;
-//     border:10px solid #666;
-// }
+.fondo{
+    background-image: url('../../../../resources/fondo.jpg');
+    height: 100vh;
+}
+ion-grid{
+   padding: 5%;
+}
+
+ion-col{
+    display: flex;
+    justify-content: center;
+}
+.imagen{
+    width: 100px;
+    height: 100px;
+    border: solid;
+    box-shadow: 2px 2px 4px grey;
+    padding: 3px;
+}
+
+.imagen:active{
+    width: 100px;
+    height: 100px;
+    border: solid;
+    border-color: turquoise;
+    padding: 3px;
+    transform: translateY(4px);
+    box-shadow: 2px 2px 4px grey;
+}
+
+.selected{
+    border: solid;
+    border-color: lawngreen;
+}
+ion-row{
+    height: 14.28571428%;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+}
 
 @media screen and (orientation:landscape) { 
-    
-    .fila{
-        display: flex;
-        justify-content: space-evenly;
+
+    ion-grid{
+     padding: 0;
     }
 
- }
+    .fondo{
+        background-image: url('../../../../resources/fondo2.jpg');
+        height: 100vh;
+    }
+  .costado{
+      display: flex;
+      flex-direction: row;
+  }
+  .tres{
+    width: 60%;
+  }
+  .dos{
+    width: 40%;
+  }
+}

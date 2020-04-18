@@ -1,51 +1,97 @@
+<ion-content no-padding no-margin>
+  <div class="fondo">
+  <ion-grid no-padding no-margin>
+    <ion-row no-padding no-margin>
+      <ion-col><img class="imagen" [class.selected]="this.idioma=='E'" (click)="seleccionaIdioma('E')" src="assets/banderas/argentina.png"></ion-col>
+      <ion-col><img class="imagen" [class.selected]="this.idioma=='P'" (click)="seleccionaIdioma('P')" src="assets/banderas/brazil.png"></ion-col>
+      <ion-col><img class="imagen" [class.selected]="this.idioma=='I'" (click)="seleccionaIdioma('I')" src="assets/banderas/estados_unidos.jpg"></ion-col>
+    </ion-row>
+  </ion-grid>
 
-<ion-content [fullscreen]="true">
-
-  <div class="fila">
-    <img width="120px" (click)="seleccionaIdioma('E')" src="assets/banderas/argentina.png">
-    <img width="120px" (click)="seleccionaIdioma('P')" src="assets/banderas/brazil.png">
-    <img width="120px" (click)="seleccionaIdioma('I')" src="assets/banderas/estados_unidos.jpg">
+  <ion-grid no-padding no-margin>
+    <ion-row no-padding no-margin>
+        <ion-col><img class="imagen" [class.selected]="this.tipo=='animales'" src='assets/animales/animales.jpg' (click)="seleccionaTipo('animales')"></ion-col>
+        <ion-col><img class="imagen" [class.selected]="this.tipo=='colores'" src='assets/colores/colores.jpg' (click)="seleccionaTipo('colores')"></ion-col>
+        <ion-col><img class="imagen" [class.selected]="this.tipo=='numeros'" src='assets/numeros/numeros.jpg' (click)="seleccionaTipo('numeros')"></ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class='costado'>
+    <div class="dos">
+    <ion-grid *ngIf="this.tipo=='animales'">
+      <ion-row>
+        <ion-col><img class="imagen" (click)="this.reproduceSonido('oveja')"
+          src="assets/animales/oveja.jpg" alt=""></ion-col>
+        <ion-col><img class="imagen" (click)="this.reproduceSonido('conejo')"
+          src="assets/animales/conejo.jpg" alt=""></ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-  <div class="fila">
-    <ion-button width="120px" (click)="seleccionaTipo('animales')" src="assets/banderas/argentina.png">animales</ion-button>
-    <ion-button width="120px" (click)="seleccionaTipo('colores')" src="assets/banderas/brazil.png">colores</ion-button>
-    <ion-button width="120px" (click)="seleccionaTipo('numeros')" src="assets/banderas/estados_unidos.jpg">numeros</ion-button>
-  </div>
+  <div class="tres">
 
-
-
-  <div class="fila">
-    <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('burro')" src="assets/animales/burro.jpg" alt="">
-    <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('perro')" src="assets/animales/perro.jpg" alt="">
-   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('gato')" src="assets/animales/gato.jpg" alt="">
+  <ion-grid *ngIf="this.tipo=='animales'">
+    <ion-row>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('burro')"
+        src="assets/animales/burro.jpg" alt=""></ion-col>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('perro')"
+        src="assets/animales/perro.jpg" alt=""></ion-col>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('gato')"
+        src="assets/animales/gato.jpg" alt=""></ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
   </div>
-   <div class="fila">
-   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('oveja')" src="assets/animales/oveja.jpg" alt="">
-   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('conejo')" src="assets/animales/conejo.jpg" alt="">
-   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('conejo')" src="assets/animales/conejo.jpg" alt="">
-  </div>
+  <div class='costado'>
 
+<div class="dos">
+  <ion-grid *ngIf="this.tipo=='numeros'">
+    <ion-row>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('uno')" src="assets/numeros/1.jpg"
+        alt=""></ion-col>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('dos')" src="assets/numeros/2.jpg"
+        alt=""></ion-col>
 
-  <div class="fila">
-    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('uno')" src="assets/numeros/1.jpg" alt="">
-    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('dos')" src="assets/numeros/2.jpg" alt="">
+    </ion-row>
+  </ion-grid>
   </div>
-  <div class="fila">
-    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('tres')" src="assets/numeros/3.jpg" alt="">
-    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('cuatro')" src="assets/numeros/4.jpg" alt="">
-    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('cinco')" src="assets/numeros/5.jpg" alt="">
-  </div>
-  <div class="fila">
-   <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('azul')" src="assets/colores/azul.png" alt="">
-   <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('verde')" src="assets/colores/verde.png" alt="">
-  </div>
-  <div class="fila">
-    <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('violeta')" src="assets/colores/violeta.png" alt="">
-    <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('rojo')" src="assets/colores/rojo.jpg" alt="">
-    <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('amarillo')" src="assets/colores/amarillo.png" alt="">
-  </div>
+<div class="tres">
+  <ion-grid *ngIf="this.tipo=='numeros'">
+    <ion-row>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('tres')" src="assets/numeros/3.jpg"
+        alt=""></ion-col>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('cuatro')"
+        src="assets/numeros/4.jpg" alt=""></ion-col>
+      <ion-col><img class="imagen"  (click)="this.reproduceSonido('cinco')"
+        src="assets/numeros/5.jpg" alt=""></ion-col>
 
- 
+    </ion-row>
+  </ion-grid>
+  </div>
+</div>
+  <div class='costado'>
 
-  
-</ion-content>
+<div class="dos">
+    <ion-grid *ngIf="this.tipo=='colores'">
+      <ion-row>
+        <ion-col><img class="imagen"  (click)="this.reproduceSonido('azul')"
+          src="assets/colores/azul.png" alt=""></ion-col>
+        <ion-col><img class="imagen"  (click)="this.reproduceSonido('verde')"
+          src="assets/colores/verde.png" alt=""></ion-col>
+      </ion-row>
+    </ion-grid>
+</div>
+<div class="tres">
+    <ion-grid *ngIf="this.tipo=='colores'">
+      <ion-row>
+        <ion-col><img class="imagen"  (click)="this.reproduceSonido('violeta')"
+          src="assets/colores/violeta.png" alt=""></ion-col>
+        <ion-col><img class="imagen"  (click)="this.reproduceSonido('rojo')"
+          src="assets/colores/rojo.jpg" alt=""></ion-col>
+        <ion-col><img class="imagen"  (click)="this.reproduceSonido('amarillo')"
+          src="assets/colores/amarillo.png" alt=""></ion-col>
+      </ion-row>
+    </ion-grid>
+</div>
+
+  </div>
+  </div>
+  </ion-content>
