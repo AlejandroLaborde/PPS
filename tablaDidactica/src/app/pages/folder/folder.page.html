@@ -1,0 +1,51 @@
+
+<ion-content [fullscreen]="true">
+
+  <div class="fila">
+    <img width="120px" (click)="seleccionaIdioma('E')" src="assets/banderas/argentina.png">
+    <img width="120px" (click)="seleccionaIdioma('P')" src="assets/banderas/brazil.png">
+    <img width="120px" (click)="seleccionaIdioma('I')" src="assets/banderas/estados_unidos.jpg">
+  </div>
+  <div class="fila">
+    <ion-button width="120px" (click)="seleccionaTipo('animales')" src="assets/banderas/argentina.png">animales</ion-button>
+    <ion-button width="120px" (click)="seleccionaTipo('colores')" src="assets/banderas/brazil.png">colores</ion-button>
+    <ion-button width="120px" (click)="seleccionaTipo('numeros')" src="assets/banderas/estados_unidos.jpg">numeros</ion-button>
+  </div>
+
+
+
+  <div class="fila">
+    <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('burro')" src="assets/animales/burro.jpg" alt="">
+    <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('perro')" src="assets/animales/perro.jpg" alt="">
+   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('gato')" src="assets/animales/gato.jpg" alt="">
+  </div>
+   <div class="fila">
+   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('oveja')" src="assets/animales/oveja.jpg" alt="">
+   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('conejo')" src="assets/animales/conejo.jpg" alt="">
+   <img width="120px" *ngIf="this.tipo=='animales'" (click)="this.reproduceSonido('conejo')" src="assets/animales/conejo.jpg" alt="">
+  </div>
+
+
+  <div class="fila">
+    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('uno')" src="assets/numeros/1.jpg" alt="">
+    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('dos')" src="assets/numeros/2.jpg" alt="">
+  </div>
+  <div class="fila">
+    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('tres')" src="assets/numeros/3.jpg" alt="">
+    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('cuatro')" src="assets/numeros/4.jpg" alt="">
+    <img width="120px" *ngIf="this.tipo=='numeros'" (click)="this.reproduceSonido('cinco')" src="assets/numeros/5.jpg" alt="">
+  </div>
+  <div class="fila">
+   <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('azul')" src="assets/colores/azul.png" alt="">
+   <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('verde')" src="assets/colores/verde.png" alt="">
+  </div>
+  <div class="fila">
+    <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('violeta')" src="assets/colores/violeta.png" alt="">
+    <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('rojo')" src="assets/colores/rojo.jpg" alt="">
+    <img width="120px" *ngIf="this.tipo=='colores'" (click)="this.reproduceSonido('amarillo')" src="assets/colores/amarillo.png" alt="">
+  </div>
+
+ 
+
+  
+</ion-content>

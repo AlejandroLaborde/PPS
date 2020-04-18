@@ -1,0 +1,37 @@
+<ion-content class="background-image" >
+
+  
+        <div style="width: 80%;
+        margin: auto;
+        margin-top: 60px;">
+        <ion-item>
+          <ion-label position="stacked">Usuario <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" [(ngModel)]="correo" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Contraseña <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="password" [(ngModel)]="clave"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" *ngIf="cargando"><ion-spinner name="crescent"></ion-spinner>
+          Cargando...</ion-button>
+
+        <ion-button expand="block" *ngIf="!cargando" (click)="logIn()" ><ion-icon name="key-outline"> </ion-icon>Aceptar</ion-button>
+       </div>
+      
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button>
+            <ion-icon name="settings"></ion-icon>
+          </ion-fab-button>
+          
+          <ion-fab-list side="start">
+            <ion-fab-button color="warning" (click)='autocompleta("IN")' >IN</ion-fab-button>
+            <ion-fab-button color="success" (click)='autocompleta("TS")' >TS</ion-fab-button>
+            <ion-fab-button color="tertiary" (click)='autocompleta("AN")'  >AN</ion-fab-button>
+            <ion-fab-button color="secondary" (click)='autocompleta("US")' >US</ion-fab-button>
+            <ion-fab-button color="primary" (click)='autocompleta("AD")' >AD</ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
+
+</ion-content>
