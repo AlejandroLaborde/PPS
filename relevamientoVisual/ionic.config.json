@@ -1,0 +1,7 @@
+{
+  "name": "relevamientoVisual",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
