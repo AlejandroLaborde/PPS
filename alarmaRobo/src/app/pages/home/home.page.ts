@@ -49,13 +49,10 @@ export class HomePage implements OnInit {
       err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
     );
      this.audioIzq.src = '../../../assets/sonidos/buscar.mp3';
-     this.audioIzq.load();
      this.audioDer.src = '../../../assets/sonidos/larga1.mp3';
-     this.audioDer.load();
      this.audioAcostado.src = '../../../assets/sonidos/auto.mp3';
-     this.audioAcostado.load();
      this.audioVer.src = '../../../assets/sonidos/sonaraaa.mp3';
-     this.audioVer.load();
+     
   }
 
   cambioEstado() {
@@ -70,7 +67,7 @@ export class HomePage implements OnInit {
 
   Accelerometer() {
     let flag = true;
-    let flagAcostado = true;
+    let flagAcostado = false;
     let flagIzq =  true;
     let flagDer = true;
 
@@ -80,16 +77,17 @@ export class HomePage implements OnInit {
       this.accY = acceleration.y;
       this.accZ = acceleration.z;
 
-      if ( this.accY < 1 &&  flagAcostado === true) {
-        flagAcostado = false;
-        timer(500).subscribe(() => {
-          if (this.accX < 3) {
-            flagAcostado = false;
-            this.vibration.vibrate(5000);
-            this.audioAcostado.play();
-          }
-        });
-    } else if ( this.accY > 5 || this.accX > 5  && flagAcostado === false ) {
+    if ( this.accY < 1 && this.accX < 1 && this.accX > -1 &&  flagAcostado === true) {
+      flagAcostado = false;
+      timer(500).subscribe(() => {
+        if (this.accX < 3) {
+          this.audioAcostado.load();
+          this.audioAcostado.play();
+          flagAcostado = false;
+          this.vibration.vibrate(5000);
+        }
+      });
+    } else if ( this.accY > 5 || this.accX > 5 || this.accX < -5  && flagAcostado === false ) {
       flagAcostado = true;
     }
       // vertical y linterna
@@ -114,6 +112,8 @@ export class HomePage implements OnInit {
           timer(500).subscribe(() => {
             if (this.accX > 3) {
               flagIzq = false;
+              this.audioIzq.load();
+
               this.audioIzq.play();
             }
           });
@@ -127,12 +127,13 @@ export class HomePage implements OnInit {
         timer(500).subscribe(() => {
           if ( this.accX < -3 ) {
             flagDer = false;
+            this.audioDer.load();
+
             this.audioDer.play();
           }
 
         });
       } else if ( this.accX > -3  && flagDer === false) {
-
         flagDer = true;
       }
     });
