@@ -19,6 +19,10 @@ export class AuthService {
   public logIn( correo: string, clave: number ){
     return this.getUsuarios().pipe( map((resp:any) => this.verificaUsuarioYclave(resp, correo, clave) ) );
   }
+  
+  public verificaUsuario(correo: string, clave: number){
+    return this.getUsuarios().pipe( map((resp:any) => this.verificaUsuarioYclave(resp, correo, clave) ) ).toPromise();
+  }
 
 
   public getDatosUser( correo: string ){
