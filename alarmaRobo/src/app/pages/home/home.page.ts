@@ -24,6 +24,8 @@ export class HomePage implements OnInit {
   audioDer = new Audio();
   audioVer = new Audio();
   audioAcostado = new Audio();
+  private sonidoClick = new Audio();
+  private warning= new Audio();
   public accX;
   public accY;
   public accZ;
@@ -52,12 +54,16 @@ export class HomePage implements OnInit {
      this.audioDer.src = '../../../assets/sonidos/larga1.mp3';
      this.audioAcostado.src = '../../../assets/sonidos/auto.mp3';
      this.audioVer.src = '../../../assets/sonidos/sonaraaa.mp3';
-     
+     this.sonidoClick.src = '../../../assets/sonidos/transicion.mp3';
+     this.warning.src='../../../assets/sonidos/warning.mp3';
+
   }
 
   cambioEstado() {
-
+    this.sonidoClick.load();
+    this.sonidoClick.play();
     if ( this.activo ) {
+      this.vibration.vibrate(1000);
       this.Accelerometer();
     } else {
       this.presentAlertPrompt();
@@ -94,6 +100,7 @@ export class HomePage implements OnInit {
       if(this.accY > 3 && flag == true){
         flag = false;
         this.flashlight.switchOn();
+        this.audioVer.load();
         this.audioVer.play();
         timer(5000).subscribe(() => {
           if ( this.accY > 3) {
@@ -113,7 +120,6 @@ export class HomePage implements OnInit {
             if (this.accX > 3) {
               flagIzq = false;
               this.audioIzq.load();
-
               this.audioIzq.play();
             }
           });
@@ -128,7 +134,6 @@ export class HomePage implements OnInit {
           if ( this.accX < -3 ) {
             flagDer = false;
             this.audioDer.load();
-
             this.audioDer.play();
           }
 
@@ -159,6 +164,7 @@ export class HomePage implements OnInit {
           cssClass: 'secondary',
           handler: () => {
             this.activo = true;
+           
           }
         }, {
           text: 'Ok',
@@ -168,6 +174,9 @@ export class HomePage implements OnInit {
                 this.subscription.unsubscribe();
                 this.activo = false;
               } else {
+                this.warning.load();
+                this.warning.play();
+                this.vibration.vibrate(3000);
                 this.activo = true;
               }
             }, error => {
