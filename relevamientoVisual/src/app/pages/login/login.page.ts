@@ -32,18 +32,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/home']);
         this.cargando=false;
       }else{
-
-          const alert = await this.alertControler.create({
-          header:'Oops!!',
-          message: 'El correo o la clave son equivocados',
-          buttons: [
-            {
-              text: 'Aceptar'
-            } 
-          ]
-        });
-        this.vibrarion.vibrar(500);
-        await alert.present();
+        this.vibrarion.vibrar(2000);
         this.cargando=false;
       }
       this.clave = null;
