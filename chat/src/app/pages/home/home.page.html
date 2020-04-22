@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" style="background-color: aqua;"> 
   <ion-toolbar>
     <ion-title>
       <ion-grid>
@@ -10,29 +10,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="container">
+<ion-content id=content [fullscreen]="true" [scrollEvents]="true">
+  
+    <div class="mensaje" *ngFor="let item of mensajes">
+      <!-- <p>{{item | json}}</p> -->
+     <app-msj [mensajeEntrada]=(item) ></app-msj>
+    </div> 
 
-    <div class="mensaje" *ngFor="let mensaje of mensajes">
-      <ion-header>
-        <p>{{mensaje.usuario}}</p>
-        <p>{{mensaje.mensaje}}</p>
-        <p>{{mensaje.fecha}}</p>
-      </ion-header>
-    </div>
-
-
-  </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-grid>
       <ion-row class="cabecera">
-        <input class="entrada" [(ngModel)]="mensaje" type="text" placeholder="Ingrese texto">
+        <input class="entrada" minlength="1" (keydown.enter)="enviar()" maxlength="21" [(ngModel)]="mensajeNuevo" type="text" placeholder="Ingrese texto">
         <ion-button color="primary" (click)="enviar()">Enviar</ion-button>
       </ion-row>
     </ion-grid>
 
   </ion-toolbar>
 </ion-footer>
+
+<!-- <ion-footer>
+  <form [formGroup]="messageForm" (submit)="sendMessage()" (keydown.enter)="sendMessage()">
+      <ion-input formControlName="message" type="text" placeholder="Enter your message"></ion-input>
+      <ion-button type="submit">Send</ion-button>
+  </form>
+</ion-footer> -->
