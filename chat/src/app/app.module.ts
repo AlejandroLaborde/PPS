@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
   HttpClientModule,
   IonicModule.forRoot(), AppRoutingModule],
   providers: [
+    
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

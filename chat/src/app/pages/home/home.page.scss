@@ -1,3 +1,20 @@
+
+
+.cabecera{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imagen{
+  width: 50px;
+  height: 50px; 
+  border-radius: 50%;
+}
+
+.entrada{
+  border-radius: 10px 10px 10px 10px;
+  height: 50px;
+}
 #container {
   text-align: center;
 
