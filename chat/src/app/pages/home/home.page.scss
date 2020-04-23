@@ -1,8 +1,40 @@
 
+.miMensaje{
+  text-align-last: right;
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
+}
+.header{
+  font-weight: bolder;
+}
 
+.hora{
+  margin: 0;
+  font: small-caption;
+  display: flex;
+  justify-content: flex-end;
+  font-size: x-small;
+}
+
+.mensaje{
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 900;
+  font-size: large;
+  
+}
 .cabecera{
   justify-content: space-between;
   align-items: center;
+}
+.enviar{
+  align-items: center;
+}
+
+.entrada{
+  border-radius: 10px 10px 10px 10px;
+  height: 50px;
 }
 
 .imagen{
@@ -11,10 +43,7 @@
   border-radius: 50%;
 }
 
-.entrada{
-  border-radius: 10px 10px 10px 10px;
-  height: 50px;
-}
+
 #container {
   text-align: center;
 

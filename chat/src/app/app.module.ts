@@ -10,6 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestore } from 'angularfire2/firestore';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,10 +21,11 @@ import { ComponentsModule } from './components/components.module';
   imports: [BrowserModule,
   HttpClientModule,
   ComponentsModule,
+  AngularFireModule.initializeApp(environment.firebaseConfig),
   IonicModule.forRoot(), AppRoutingModule],
   providers: [
-    
     StatusBar,
+    AngularFirestore,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
