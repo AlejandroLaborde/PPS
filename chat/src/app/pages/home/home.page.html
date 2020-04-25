@@ -1,9 +1,10 @@
-<ion-header [translucent]="false" style="background-color: aqua;"> 
+<ion-header [translucent]="false" style="background-color: red;"> 
+
   <ion-toolbar>
-    <ion-title>
+    <ion-title [ngClass]="{PPS4A: this.grupoActual==='PPS-4A', PPS4B: this.grupoActual==='PPS-4B'}" >
       <ion-grid>
         <ion-row class="cabecera">
-          <p style="margin: 0;">{{usuarioActual}}</p> 
+          <p style="margin: 0;text-shadow: 2px 2px 2px gray"> <strong> {{grupoActual}}</strong></p> 
             <ion-button *ngIf="usuarioActual == 'admin@admin.com'"border-radius= "30px" class="imagen" color="primary">AD</ion-button>
            <ion-button *ngIf="usuarioActual == 'invitado@invitado.com'"border-radius= "30px" class="imagen" color="warning">IN</ion-button>
            <ion-button *ngIf="usuarioActual == 'tester@tester.com'"border-radius= "30px" class="imagen" color="success">TS</ion-button>
@@ -15,7 +16,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="background-color: red;">
   
     <div id="listaMensajes">
     <ion-list>
@@ -51,9 +52,7 @@
   </ion-toolbar>
 </ion-footer>
 
-<!-- <ion-footer>
-  <form [formGroup]="messageForm" (submit)="sendMessage()" (keydown.enter)="sendMessage()">
-      <ion-input formControlName="message" type="text" placeholder="Enter your message"></ion-input>
-      <ion-button type="submit">Send</ion-button>
-  </form>
-</ion-footer> -->
+<div class="spinnerInterceptor heartBeat" *ngIf="showSpinner">
+  <img src="../assets/icon/icon.png">
+  <p>Cargando...</p>
+</div>

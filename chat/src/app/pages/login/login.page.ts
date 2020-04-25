@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
   
     this.loguinService.logIn( this.correo , this.clave ).subscribe( async resp =>{
       if( resp ){
-        this.router.navigate(['/home']);
+        this.router.navigate(['/grupo']);
         this.cargando=false;
       }else{
 

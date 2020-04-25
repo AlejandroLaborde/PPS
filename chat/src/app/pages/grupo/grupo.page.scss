@@ -1,0 +1,39 @@
+
+
+.texto{
+    color: #FFF;
+    margin-top: 25%;
+    text-align: center;
+    font-weight: 700;
+    font: italic bold 90px Georgia, Serif;
+    text-shadow: -4px 3px 0 #34d16e, -14px 7px 0 #0a0e27;
+}
+
+.verde{
+    background-color: cyan;
+}   
+
+.rojo{
+    background-color: cadetblue;
+}
+
+
+.boton{
+    width: 100%;
+    height: 50%;
+    margin: inherit;
+}
+
+@media screen and (orientation:landscape) { 
+
+    .texto{
+        color: #FFF;
+        margin-top: 5%;
+        text-align: center;
+        font-weight: 700;
+        font: italic bold 90px Georgia, Serif;
+        text-shadow: -4px 3px 0 #34d16e, -14px 7px 0 #0a0e27;
+    }
+   
+}
+

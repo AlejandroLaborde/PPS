@@ -1,4 +1,23 @@
 
+
+.PPS4A{
+  background-color: cadetblue;
+}
+
+.PPS4B{
+  background-color: cyan;
+}
+
+.heartBeat {
+  -webkit-animation-name: heartBeat;
+  animation-name: heartBeat;
+  -webkit-animation-duration: 1.3s;
+  animation-duration: 1.3s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 .miMensaje{
   text-align-last: right;
   margin: 0;

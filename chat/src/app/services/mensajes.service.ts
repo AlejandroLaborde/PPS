@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class MensajesService {
 
+  private grupoSelected;
   private itemsCollection: AngularFirestoreCollection<any>;
   items: Observable<any[]>;
 
@@ -19,14 +20,21 @@ export class MensajesService {
   }
 
   public nuevoMensaje( mensaje: Mensaje){
-    //return this.httpClient.post(`${this.host}/mensajes.json`,mensaje).toPromise();
-    return this.itemsCollection.add( {mensaje:mensaje.mensaje, fecha:mensaje.fecha, usuario:mensaje.usuario, timestamp:mensaje.timestamp} );
+    
+    return this.itemsCollection.add( {mensaje:mensaje.mensaje, fecha:mensaje.fecha, usuario:mensaje.usuario, timestamp:mensaje.timestamp, grupo:mensaje.grupo} );
   }
 
+  setearGrupo( nombre ){
+    this.grupoSelected = nombre;
+  }
+
+  public getGrupo(  ){
+    return this.grupoSelected;
+  }
   public getMensajes(){
-    //return this.httpClient.get(`${this.host}/mensajes.json`).pipe(map( datos=>this.objecToArray(datos) ));
-   
+
     return this.items.pipe(  map(datos => {
+      console.log(datos);
       return datos.sort((a, b) => {
         return  parseFloat(a.timestamp) - parseFloat(b.timestamp);
       });

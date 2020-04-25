@@ -3,6 +3,7 @@ import { MensajesService } from 'src/app/services/mensajes.service';
 import { Mensaje } from 'src/app/models/mensaje';
 import { AuthService } from 'src/app/services/auth.service';
 import { IonList, IonContent } from '@ionic/angular';
+import { map, filter } from 'rxjs/operators';
 
 
 @Component({
@@ -17,19 +18,30 @@ export class HomePage implements OnInit{
 
 
   usuarioActual = "nn";
+  grupoActual= "PPS-4A" ;
   user= "US";
   mensajeNuevo:string;
   mensajes:any[];
+  showSpinner=true;
 
   constructor( private mensajeServices: MensajesService, private authServices: AuthService) {
     this.usuarioActual = this.authServices.getCurrentUserMail();
-
+    this.grupoActual = this.mensajeServices.getGrupo();
   }
   ngOnInit(){
     
 
-    this.mensajeServices.getMensajes().subscribe( (resp:any)=>{
+    this.mensajeServices.getMensajes().pipe(map( (dato:any) =>{
+      let datosFiltrados=[]
+      dato.forEach(element => {
+        if( element.grupo === this.grupoActual ){
+          datosFiltrados.push(element);
+        }
+      });
+      return datosFiltrados;
+    } )).subscribe( (resp:any)=>{
       this.mensajes = resp;
+      this.showSpinner=false;
       setTimeout(()=>{
         this.scrollDown();
       },500);
@@ -39,7 +51,7 @@ export class HomePage implements OnInit{
   enviar(){
     
     this.mensajeServices.nuevoMensaje(
-      new Mensaje(this.mensajeNuevo,this.usuarioActual,new Date().toLocaleString(),new Date().getTime())
+      new Mensaje(this.mensajeNuevo,this.usuarioActual,new Date().toLocaleString(),new Date().getTime(),this.grupoActual)
       ).then(()=>{
       this.mensajeNuevo = null;
     }).catch(error=>{
@@ -51,5 +63,8 @@ export class HomePage implements OnInit{
     this.content.scrollToBottom();
   }
 
+  filtraGrupo(  ){
+
+  }
 
 }
