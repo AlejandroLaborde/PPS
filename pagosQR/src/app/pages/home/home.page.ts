@@ -58,14 +58,23 @@ export class HomePage implements OnInit {
 
   async eliminarSaldo(){
     if(this.miCredito != 0){
+      
+      this.cobroService.eliminarSaldo().subscribe( async ()=>{
+        this.miCredito=0;
+        this.saldoCompleto.codigo10=0;
+        this.saldoCompleto.codigo100=0;
+        this.saldoCompleto.codigo50=0;
+      })
+
       const toast = await this.toastService.create({
         duration: 2000,
-        message: "Se elimino el Crédito",
+        message: 'Se elimino el Crédito',
         color:'danger'
       });
       toast.present();
       this.miCredito = 0;
-    }
+      }
+    
   }
 
 

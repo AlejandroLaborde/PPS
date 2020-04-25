@@ -25,13 +25,18 @@ export class CobroService {
     return this.httpClient.get(`${this.host}saldos/${this.usuarioActual}/${codigo}.json`)
   }
 
+  eliminarSaldo(){
+    return this.httpClient.delete(`${this.host}saldos/${this.usuarioActual}.json`);
+  }
+
+
   obtenerSaldo( usuario:string ){
     this.usuarioActual="nn";
     return this.obtenerSaldos().pipe(map( (filtro:any) =>{
       let saldo;
       filtro.forEach(element => {
         if( element.usuario === usuario ){
-
+ 
           this.usuarioActual = element.id;
           saldo=element;
         }
