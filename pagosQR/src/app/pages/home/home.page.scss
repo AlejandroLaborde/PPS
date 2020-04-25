@@ -1,3 +1,40 @@
+
+.eliminar{
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.linea{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.plata{
+  font-size: xxx-large;
+}
+
+.txt_button{
+  font-size: x-large;
+}
+
+.botonScan{
+  background-color: aqua;
+  height: 100px;
+}
+
+
+.cabecera{
+  justify-content: space-between;
+  align-items: center;
+}
+.qr{
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+
 #container {
   text-align: center;
 
