@@ -12,6 +12,8 @@ export class FolderPage implements OnInit {
   
   idioma: string;
   tipo: string;
+  click = new Audio();
+
 
   constructor(private nativeAudio: NativeAudio) { }
 
@@ -19,6 +21,8 @@ export class FolderPage implements OnInit {
     this.seleccionaIdioma('E');
     this.seleccionaTipo('animales');
     this.instanciaSonidos();
+    this.click.src='../../../assets/sonidos/click.mp3';
+    this.click.load();
   }
 
   reproduceSonido( tipo: string){
@@ -32,11 +36,14 @@ export class FolderPage implements OnInit {
   }
 
   seleccionaIdioma( idioma: string ){
+    this.click.play();
     console.log('idioma: ' + idioma );
     this.idioma = idioma;
   }
 
   seleccionaTipo( tipo: string){
+    this.click.play();
+
     console.log('Tipo: ' + tipo );
     this.tipo = tipo;
   }

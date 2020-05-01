@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Vibration } from '@ionic-native/vibration/ngx';
+
 
 @Component({
   selector: 'app-login',
@@ -13,14 +15,20 @@ export class LoginPage implements OnInit {
   correo: string;
   clave: number;
   cargando = false;
+  warning = new Audio();
+  transicion = new Audio();
   constructor(
     private alertControler: AlertController, 
     private loguinService: AuthService,
     private router: Router,
+    private vibrarion: Vibration
 ) { }
 
   ngOnInit( ) {
-
+    this.warning.src='../../../assets/sonidos/warning.mp3';
+    this.warning.load();
+    this.transicion.src='../../../assets/sonidos/transicion.mp3';
+    this.transicion.load();
   }
 
   logIn(){
@@ -28,19 +36,11 @@ export class LoginPage implements OnInit {
     this.loguinService.logIn( this.correo , this.clave ).subscribe( async resp =>{
       if( resp ){
         this.router.navigate(['/folder']);
+        this.transicion.play();
         this.cargando=false;
       }else{
-
-          const alert = await this.alertControler.create({
-          header:'Oops!!',
-          message: 'El correo o la clave son equivocados',
-          buttons: [
-            {
-              text: 'Aceptar'
-            } 
-          ]
-        });
-        await alert.present();
+        this.warning.play();
+        this.vibrarion.vibrate(1000);
         this.cargando=false;
       }
       this.clave = null;

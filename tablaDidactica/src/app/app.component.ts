@@ -33,6 +33,10 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      let inicio = new Audio();
+      inicio.src='./../assets/sonidos/inicio.mp3';
+      inicio.load();
+      inicio.play();
       this.splashScreen.hide();
     });
 

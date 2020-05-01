@@ -13,13 +13,18 @@ export class LoginPage implements OnInit {
   correo: string;
   clave: number;
   cargando = false;
+  click=new Audio();
+  private warning = new Audio();
   constructor(
     private alertControler: AlertController, 
     private loguinService: AuthService,
     private router: Router) { }
 
   ngOnInit( ) {
-
+    this.warning.src='../../../assets/sonido/warning.mp3';
+    this.warning.load();
+    this.click.src='../../../assets/sonido/click.mp3';
+    this.click.load();
   }
 
   logIn(){
@@ -30,17 +35,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/grupo']);
         this.cargando=false;
       }else{
-
-          const alert = await this.alertControler.create({
-          header:'Oops!!',
-          message: 'El correo o la clave son equivocados',
-          buttons: [
-            {
-              text: 'Aceptar'
-            } 
-          ]
-        });
-        await alert.present();
+        this.warning.play();
         this.cargando=false;
       }
       this.clave = null;
@@ -49,6 +44,7 @@ export class LoginPage implements OnInit {
   }
 
   autocompleta( value: string ){
+    this.click.play();
     switch(value){
       case 'AD': {
         this.correo="admin@admin.com";

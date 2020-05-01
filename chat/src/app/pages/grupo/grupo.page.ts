@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 })
 export class GrupoPage implements OnInit {
 
-  constructor( private mensajesService: MensajesService, private router:Router) { }
+  click= new Audio();
+  constructor( private mensajesService: MensajesService, private router:Router) { 
+    this.click.src='../../../assets/sonido/click.mp3';
+    this.click.load();
+  }
 
   ngOnInit() {
   }
@@ -21,7 +25,8 @@ export class GrupoPage implements OnInit {
     }else{
       this.mensajesService.setearGrupo('PPS-4B');
     }
+    this.click.play();
     this.router.navigate(['home']);
-  }
+  } 
 
 }
