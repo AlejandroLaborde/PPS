@@ -1,6 +1,8 @@
 <ion-app>
-  <div class="spiner" *ngIf="loading" >
-    <img src="assets/relevamientoIcon.png" alt="">
-  </div>
+  
+<div *ngIf="showSplash" class="splash">
+  <div class="spinner heartBeat"></div>
+</div>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

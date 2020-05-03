@@ -13,6 +13,8 @@ import { timer } from 'rxjs/internal/observable/timer';
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
   showSplash: Boolean = true;
+  inicio = new Audio();
+
 
   public appPages = [
     {
@@ -27,16 +29,15 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
+    this.inicio.src='./../assets/sonidos/inicio.mp3';
+    this.inicio.load();
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      let inicio = new Audio();
-      inicio.src='./../assets/sonidos/inicio.mp3';
-      inicio.load();
-      inicio.play();
+      this.inicio.play();
       this.splashScreen.hide();
     });
 

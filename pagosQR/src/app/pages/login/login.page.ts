@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,6 +14,7 @@ export class LoginPage implements OnInit {
   correo: string;
   clave: number;
   cargando = false;
+  warning = new Audio();
   constructor(
     private alertControler: AlertController, 
     private loguinService: AuthService,
@@ -20,7 +22,8 @@ export class LoginPage implements OnInit {
 ) { }
 
   ngOnInit( ) {
-
+    this.warning.src='../../../assets/sonido';
+    this.warning.load();
   }
 
   logIn(){
@@ -31,17 +34,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/home']);
         this.cargando=false;
       }else{
-
-          const alert = await this.alertControler.create({
-          header:'Oops!!',
-          message: 'El correo o la clave son equivocados',
-          buttons: [
-            {
-              text: 'Aceptar'
-            } 
-          ]
-        });
-        await alert.present();
+        this.warning.play();
         this.cargando=false;
       }
       this.clave = null;

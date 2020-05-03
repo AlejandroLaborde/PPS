@@ -63,7 +63,7 @@ export class HomePage implements OnInit {
         this.miCredito=0;
         this.saldoCompleto.codigo10=0;
         this.saldoCompleto.codigo100=0;
-        this.saldoCompleto.codigo50=0;
+        this.saldoCompleto.codigo50=0; 
       })
 
       const toast = await this.toastService.create({

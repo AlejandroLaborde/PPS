@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ComponentsService } from './services/components.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ import { ComponentsService } from './services/components.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent{
+  showSplash: Boolean = true;
+
   loading = true;
   constructor(
     private platform: Platform,
@@ -21,14 +24,15 @@ export class AppComponent{
     this.initializeApp();
   }
 
-
+  
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
-      this.componentsService.playSong('inicioApp');
-      this.loading=false;
+      this.splashScreen.hide(); 
     });
-    
+    timer(5000).subscribe( () => {
+      this.componentsService.playSong('inicioApp');
+      this.showSplash = false;
+    });
   }
 }

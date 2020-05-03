@@ -56,11 +56,11 @@ export class HomePage implements OnInit {
      this.audioVer.src = '../../../assets/sonidos/sonaraaa.mp3';
      this.sonidoClick.src = '../../../assets/sonidos/transicion.mp3';
      this.warning.src='../../../assets/sonidos/warning.mp3';
+     this.sonidoClick.load();
 
   }
 
   cambioEstado() {
-    this.sonidoClick.load();
     this.sonidoClick.play();
     if ( this.activo ) {
       this.vibration.vibrate(1000);
@@ -91,7 +91,7 @@ export class HomePage implements OnInit {
           this.audioAcostado.play();
           flagAcostado = false;
           this.vibration.vibrate(5000);
-        }
+        } 
       });
     } else if ( this.accY > 5 || this.accX > 5 || this.accX < -5  && flagAcostado === false ) {
       flagAcostado = true;

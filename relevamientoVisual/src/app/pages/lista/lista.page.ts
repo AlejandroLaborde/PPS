@@ -23,6 +23,8 @@ export class ListaPage implements OnInit {
   allPhotos: Imagen[];
   myPhotos: Imagen[];
   currentUserId: string;
+  showSpinner=true;
+
 
   constructor(
     private router: Router,
@@ -50,6 +52,7 @@ export class ListaPage implements OnInit {
     })
     this.imagesService.GetAllImagesByType(this.tipoLista).subscribe(images => {
       this.allPhotos = images;
+      this.showSpinner=false;
       console.log(this.allPhotos);
     });
     this.currentUserId = this.authService.getCurrentUserId();
@@ -89,19 +92,11 @@ export class ListaPage implements OnInit {
         if (imageData !== 'No Image Selected') {
           this.subirFoto(imageData);
         } else {
-          const alert = await this.alertController.create({
-            message: 'no se subio la imagen',
-            buttons: ['OK']
-          });
-          await alert.present();
+          
         }
       })
       .catch(async error => {
-        const alert = await this.alertController.create({
-          message: error,
-          buttons: ['OK']
-        });
-        await alert.present();      
+        
       });
   }
 
@@ -118,19 +113,10 @@ export class ListaPage implements OnInit {
     this.imagesService
       .saveImage(image)
       .then(async () => {
-        const alert = await this.alertController.create({
-          message: 'Se subio la imagen',
-          buttons: ['OK']
-        });
-        await alert.present();
+       
       })
       .catch(async error => {
-        const alert = await this.alertController.create({
-          header: 'Fallo al subir imagen',
-          message: JSON.parse(error),
-          buttons: ['OK']
-        });
-        await alert.present();
+       
       });
   }
 

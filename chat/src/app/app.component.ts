@@ -21,19 +21,19 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     
+    this.carga.src='../assets/sonido/inicio.mp3';
+    this.carga.load();
     this.initializeApp();
   }
 
   initializeApp() {
-    this.carga.src='../assets/sonido/inicio.mp3';
-    this.carga.load();
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
     timer(5000).subscribe(() => {
       this.showSplash = false;
-      this.carga.play();
+      this.carga.play(); 
     })   
     
   }
